@@ -12,6 +12,7 @@ var del = require('del');
 var header = require('gulp-header');
 var uglify = require('gulp-uglify');
 var babel = require('gulp-babel'); // Uglify not working without gulp-babel?
+var rename = require('gulp-rename');
 var pkg = require('./package.json');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
@@ -26,6 +27,7 @@ gulp.task('sass', function() {
             outputStyle: 'compressed'
         }))
         .pipe(sourcemaps.write())
+        .pipe(rename('elasticslider.css'))
         .pipe(gulp.dest('src/css'))
         .pipe(connect.reload());
 });
@@ -57,7 +59,6 @@ gulp.task('dist:clean', function (cb) {
 gulp.task('dist:copyJs', ['dist:clean'], function () {
     return gulp.src('src/angular-elasticslider.js')
         .pipe(gulp.dest('temp'))
-
 });
 
 gulp.task('dist:copyView', ['dist:clean'], function () {
@@ -72,6 +73,21 @@ gulp.task('dist:copyView', ['dist:clean'], function () {
       .pipe(gulp.dest('temp'));
 });
 
+gulp.task('dist:copyJs', ['dist:clean'], function () {
+    return gulp.src('src/angular-elasticslider.js')
+        .pipe(gulp.dest('temp'))
+});
+
+gulp.task('dist:sass', function() {
+    return gulp.src('src/scss/*.scss')
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }))
+        .pipe(rename('elasticslider.css'))
+        .pipe(header(banner, { pkg : pkg } ))
+        .pipe(gulp.dest('dist/css'));
+});
+
 gulp.task('dist:build', ['dist:copyJs', 'dist:copyView'], function () {
     return gulp.src('temp/*.js')
         .pipe(concat('angular-elasticslider.min.js'))
@@ -84,6 +100,6 @@ gulp.task('dist:build', ['dist:copyJs', 'dist:copyView'], function () {
 // Tasks
 // ============================================================================
 gulp.task('serve', ['sass', 'js', 'connect', 'watch']);
-gulp.task('default', ['dist:build'], function(cb) {
+gulp.task('default', ['dist:build', 'dist:sass'], function(cb) {
     return del(['temp'], cb);
 });
