@@ -2,6 +2,7 @@
   "name": "Angular-ElasticSlider",
   "version": "0.4.0",
   "description": "An agnostic and responsive slider.",
+  "homepage": "https://github.com/JamyGolden/Angular-ElasticSlider",
   "main": "dist/angular-elasticslider.min.js",
   "files": [
     "dist/angular-elasticslider.min.js"
@@ -15,6 +16,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.2.0",
     "gulp-header": "^1.7.1",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.4",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.4.1"
