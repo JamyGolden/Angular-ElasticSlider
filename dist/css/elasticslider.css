@@ -1,0 +1,7 @@
+/**
+ * Angular-ElasticSlider - An agnostic and responsive slider.
+ * @version v0.4.0
+ * @link https://github.com/JamyGolden/Angular-ElasticSlider
+ * @license MIT
+ */
+.ElasticSlider{display:block;background:red;position:relative;overflow:hidden}.ElasticSlider-pagiList{width:100%;position:absolute;left:0;bottom:0;z-index:5}.ElasticSlider-pagiItem{float:left}.ElasticSlider-pagiItem--isActive{background:red}.ElasticSlider-arrowList{width:100%;position:absolute;left:0;top:50%;z-index:5}.ElasticSlider-arrowItem{float:left}.ElasticSlider-item{background:green;height:100%;width:100%;position:absolute;top:-100%;left:-100%;z-index:0}.ElasticSlider-item--clone{z-index:1}.ElasticSlider-item--isActive{left:0;top:0}.ElasticSlider-item--animateFadeInit{top:0%;left:0%;opacity:0;transition:opacity 0.6s ease-out}.ElasticSlider-item--animateFadeStart{opacity:1}.ElasticSlider-item--animateNextSlideInit{left:100%;top:0%;transition:left 1s cubic-bezier(0.95, 0.05, 0.795, 0.035)}.ElasticSlider-item--animateNextSlideStart{left:0%}.ElasticSlider-item--animatePrevSlideInit{top:0%;transition:left 1s cubic-bezier(0.95, 0.05, 0.795, 0.035)}.ElasticSlider-item--animatePrevSlideStart{left:0%}.ElasticSlider-item--animateActiveNextSlideInit{transition:left 1s cubic-bezier(0.95, 0.05, 0.795, 0.035)}.ElasticSlider-item--animateActiveNextSlideStart{left:-100%}.ElasticSlider-item--animateActivePrevSlideInit{transition:left 1s cubic-bezier(0.95, 0.05, 0.795, 0.035)}.ElasticSlider-item--animateActivePrevSlideStart{left:100%}
