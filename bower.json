@@ -1,9 +1,20 @@
 {
-  "name": "Angular ElasticSlider",
+  "name": "angular-elasticslider",
   "version": "0.4.0",
   "description": "An agnostic and responsive slider.",
+  "authors": [
+    "Jamy Golden <jamygolden@gmail.com>"
+  ],
+  "keywords": [
+    "angular",
+    "angular carousel",
+    "angular slider",
+    "elasticslider",
+    "slider",
+    "carousel"
+  ],
   "dependencies": {
-    "angular": "~1.4.6",
+    "angular": "~1.4.0",
     "elasticslider": "~0.4.0"
   }
 }
