@@ -1,0 +1,32 @@
+<div>
+    <div class="ElasticSlider-container"
+     ng-transclude>
+    </div>
+
+    <div class="ElasticSlider-arrowList"
+     ng-if="enableArrows === true">
+
+        <div ng-click="toSlide('Prev');"
+         class="ElasticSlider-arrowItem">
+            Prev
+        </div>
+
+        <div ng-click="toSlide('Next');"
+         class="ElasticSlider-arrowItem">
+            Next
+        </div>
+
+    </div>
+
+    <div ng-if="enablePagination === true">
+        <div class="ElasticSlider-pagiList">
+            <div ng-repeat="item in pagiArr"
+             class="ElasticSlider-pagiItem"
+             ng-class="{'ElasticSlider-pagiItem--isActive': item.isActive}"
+             ng-click="setActive(item.index);">
+                {{item.index}}
+            </div>
+
+        </div>
+    </div>
+</div>

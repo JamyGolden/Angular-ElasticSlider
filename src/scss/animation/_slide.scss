@@ -1,0 +1,49 @@
+// ============================================================================
+// ElasticSlider
+// Slide animation
+// ============================================================================
+
+.ElasticSlider-item {
+    // Easily change the easing by replacing the cubic-bezier values below.
+    // You can find various easing functions from http://easings.net/
+    $easeInOutExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+
+    // Clone
+    // ========================================================================
+    // Direction Next
+    &--animateNextSlideInit {
+        left: 100%;
+        top: 0%;
+        transition: left 1s $easeInOutExpo;
+    }
+    &--animateNextSlideStart {
+        left: 0%;
+    }
+
+    // Direction Prev
+    &--animatePrevSlideInit {
+        top: 0%;
+        transition: left 1s $easeInOutExpo;
+    }
+    &--animatePrevSlideStart {
+        left: 0%;
+    }
+
+    // Active slide
+    // ========================================================================
+    // Direction Next
+    &--animateActiveNextSlideInit {
+        transition: left 1s $easeInOutExpo;
+    }
+    &--animateActiveNextSlideStart {
+        left: -100%;
+    }
+
+    // Direction Prev
+    &--animateActivePrevSlideInit {
+        transition: left 1s $easeInOutExpo;
+    }
+    &--animateActivePrevSlideStart {
+        left: 100%;
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Angular ElasticSlider",
+  "version": "0.4.0",
+  "description": "An agnostic and responsive slider.",
+  "dependencies": {
+    "angular": "~1.4.6",
+    "elasticslider": "~0.4.0"
+  }
+}

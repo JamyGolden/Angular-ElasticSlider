@@ -1,0 +1,70 @@
+<!doctype html>
+<html ng-app="ElasticSliderApp">
+<head>
+    <title>Elastic Slider</title>
+    <link rel="stylesheet" href="css/ElasticSlider.css">
+
+    <style>
+        .slider {
+            height: 200px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <elastic-slider class="slider"
+     animation="fade"
+     auto-play-duration="8000"
+     enable-arrows="true"
+     enable-pagination="true">
+        <div class="something">
+            Something
+        </div>
+        <div style="background-color: papayawhip">
+            testing slide
+        </div>
+
+        <div style="background-color: lightblue">
+            bleh
+        </div>
+
+        <div style="background-color: purple">
+            meh
+        </div>
+    </elastic-slider>
+
+    <elastic-slider class="slider"
+     animation="slide"
+     active-slide="1"
+     auto-play-duration="8000"
+     enable-arrows="true"
+     enable-pagination="true">
+        <div class="something">
+            Something
+        </div>
+        <div style="background-color: papayawhip">
+            testing slide
+        </div>
+
+        <div style="background-color: lightblue">
+            bleh
+        </div>
+
+        <div style="background-color: purple">
+            meh
+        </div>
+    </elastic-slider>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/elasticslider/dist/elasticslider.min.js"></script>
+    <script src="../dist/angular-elasticslider.min.js"></script>
+    <script>(function(){
+        'use strict';
+
+        angular.module('ElasticSliderApp', [
+            'ngElasticSlider'
+        ]);
+    })();
+    </script>
+</body>
+</html>

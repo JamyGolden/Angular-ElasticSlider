@@ -1,0 +1,17 @@
+// ============================================================================
+// ElasticSlider
+// Fade animation
+// ============================================================================
+
+.ElasticSlider-item {
+    &--animateFadeInit {
+        top: 0%;
+        left: 0%;
+        opacity: 0;
+        transition: opacity 0.6s ease-out;
+    }
+
+    &--animateFadeStart {
+        opacity: 1;
+    }
+}
