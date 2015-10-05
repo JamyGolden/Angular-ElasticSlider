@@ -1,11 +1,11 @@
-(function(window, angular, undefined){
+(function(angular){
 'use strict';
 
 angular.module('ngElasticSlider', [])
 .directive('elasticSlider', function(){
 
     // Factory methods
-    // ================================================================
+    // ========================================================================
     function _pagiFactory(num, activeSlide) {
         var arr = [];
         activeSlide = activeSlide || 1;
@@ -47,9 +47,15 @@ angular.module('ngElasticSlider', [])
             // Private properties
             // ================================================================
             function _constructor(scope, element) {
-                _totalSlides = element[0].querySelector('.ElasticSlider-container').children.length;
+                var elContainer = element[0]
+                    .querySelector('.ElasticSlider-container');
 
-                scope.elasticSlider = new ElasticSlider(element[0], _sliderOptions);
+                _totalSlides = elContainer.children.length;
+
+                scope.elasticSlider = new ElasticSlider(
+                    element[0],
+                    _sliderOptions
+                );
                 scope.pagiArr = _pagiFactory(_totalSlides, scope.activeSlide);
 
                 // One way binding
@@ -120,4 +126,4 @@ angular.module('ngElasticSlider', [])
     }
 })
 
-})(window, angular);
+})(angular);
