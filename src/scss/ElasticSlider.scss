@@ -1,13 +1,15 @@
 // ============================================================================
 // ElasticSlider
-// Author: Jamy Golden (http://css-plus.com/)
+// Author: Jamy Golden (http://twitter.com/jamygolden)
 // ============================================================================
 
 .ElasticSlider {
     display: block;
     background: red;
-    position: relative;
+    height: 200px;
     overflow: hidden;
+    position: relative;
+    width: 100%;
 
     &-container {}
 
