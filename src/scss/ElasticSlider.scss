@@ -11,22 +11,42 @@
     position: relative;
     width: 100%;
 
+    @at-root {
+
+    %disc {
+        background-color: #fff;
+        border-radius: 30px;
+        border: 3px solid #000;
+        box-sizing: border-box;
+        cursor: pointer;
+        opacity: 0.3;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+
     &-container {}
 
     &-pagiList {
-        width: 100%;
         position: absolute;
-        left: 0;
-        bottom: 0;
+        right: 20px;
+        bottom: 20px;
         z-index: 5;
     }
 
         &-pagiItem {
-            float: left;
+            @extend %disc;
+
+            display: inline-block;
+            height: 20px;
+            margin-left: 5px;
+            width: 20px;
         }
 
         &-pagiItem--isActive {
-            background: red;
+            opacity: 0.5;
         }
 
     &-arrowList {
@@ -38,7 +58,22 @@
     }
 
         &-arrowItem {
-            float: left;
+            @extend %disc;
+
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 50%;
+            margin-top: -30px;
+        }
+
+        &-arrowItem--prev {
+            left: 20px;
+
+        }
+
+        &-arrowItem--next {
+            right: 20px;
         }
 
     &-item {
@@ -59,6 +94,8 @@
             top: 0;
         }
     }
+
+    } // @at-root
 }
 
 // Animation styles

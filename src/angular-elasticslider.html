@@ -7,13 +7,11 @@
      ng-if="enableArrows === true">
 
         <div ng-click="toSlide('Prev');"
-         class="ElasticSlider-arrowItem">
-            Prev
+         class="ElasticSlider-arrowItem ElasticSlider-arrowItem--prev">
         </div>
 
         <div ng-click="toSlide('Next');"
-         class="ElasticSlider-arrowItem">
-            Next
+         class="ElasticSlider-arrowItem ElasticSlider-arrowItem--next">
         </div>
 
     </div>
@@ -24,7 +22,6 @@
              class="ElasticSlider-pagiItem"
              ng-class="{'ElasticSlider-pagiItem--isActive': item.isActive}"
              ng-click="setActive(item.index);">
-                {{item.index}}
             </div>
         </div>
     </div>
