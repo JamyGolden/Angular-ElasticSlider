@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('ngElasticSlider', [])
-.directive('elasticSlider', function(){
+.directive('elasticSlider', ['$timeout', function($timeout){
 
     // Factory methods
     // ========================================================================
@@ -124,6 +124,6 @@ angular.module('ngElasticSlider', [])
             _constructor(scope, element);
         }
     }
-})
+}]);
 
 })(angular);
