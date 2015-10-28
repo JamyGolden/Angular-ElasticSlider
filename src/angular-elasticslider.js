@@ -10,7 +10,7 @@ angular.module('ngElasticSlider', [])
         var arr = [];
         activeSlide = activeSlide || 1;
 
-        for (let i = 0; i < num; i++) {
+        for (var i = 0; i < num; i++) {
             arr.push({
                 index: i,
                 isActive: (activeSlide - 1) === i,
