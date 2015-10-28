@@ -12,26 +12,21 @@
     </style>
 </head>
 <body>
+    <div ng-click="addRemoveSlide();">
+        Add slide
+    </div>
     <elastic-slider class="slider"
      animation="fade"
      auto-play-duration="8000"
      enable-arrows="true"
-     enable-pagination="true">
-        <div class="something">
-            Something
-        </div>
-        <div style="background-color: papayawhip">
-            testing slide
-        </div>
-
-        <div style="background-color: lightblue">
-            bleh
-        </div>
-
-        <div style="background-color: purple">
-            meh
+     enable-pagination="true"
+     trigger-update="trigger">
+        <div ng-repeat="item in arr"
+         ng-attr-style="background-color: {{item.color}}">
+            {{item.text}}
         </div>
     </elastic-slider>
+
 
     <elastic-slider class="slider"
      animation="slide"
@@ -40,31 +35,71 @@
      enable-arrows="true"
      enable-pagination="true">
         <div class="something">
-            Something
+            A slide
         </div>
+
         <div style="background-color: papayawhip">
-            testing slide
+            Another slide
         </div>
 
         <div style="background-color: lightblue">
-            bleh
+            This can't be another one?
         </div>
 
         <div style="background-color: purple">
-            meh
+            I hope this is the last of them!
         </div>
     </elastic-slider>
 
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/elasticslider-core/dist/elasticslider-core.min.js"></script>
     <script src="../dist/angular-elasticslider.min.js"></script>
+    <!-- <script src="angular-elasticslider.js"></script> -->
     <script>
     (function(){
         'use strict';
 
         angular.module('ExampleApp', [
             'ngElasticSlider'
-        ]);
+        ]).run(function($rootScope) {
+
+            // Not necessary for plugin. Used to display ng-repeat and dynamic
+            // carousel functionality.
+            $rootScope.arr = [
+                {
+                    'text': 'A slide',
+                    'color': 'green'
+                },
+
+                {
+                    'text': 'Another slide',
+                    'color': 'papayawhip'
+                },
+
+                {
+                    'text': 'This can\'t be another one?',
+                    'color': 'lightblue'
+                },
+
+                {
+                    'text': 'I hope this is the last of them!',
+                    'color': 'purple'
+                },
+            ];
+
+            $rootScope.addRemoveSlide = function(){
+                if ($rootScope.arr.length === 4) {
+                    $rootScope.arr.push({
+                        'text': 'new',
+                        'color': 'blue'
+                    });
+                } else {
+                    $rootScope.arr.pop();
+                }
+
+                $rootScope.trigger = true;
+            }
+        });
     })();
     </script>
 </body>

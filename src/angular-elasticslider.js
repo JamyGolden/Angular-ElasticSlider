@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('ngElasticSlider', [])
-.directive('elasticSlider', function(){
+.directive('elasticSlider', ['$timeout', function($timeout){
 
     // Factory methods
     // ========================================================================
@@ -10,7 +10,7 @@ angular.module('ngElasticSlider', [])
         var arr = [];
         activeSlide = activeSlide || 1;
 
-        for (let i = 0; i < num; i++) {
+        for (var i = 0; i < num; i++) {
             arr.push({
                 index: i,
                 isActive: (activeSlide - 1) === i,
@@ -29,6 +29,7 @@ angular.module('ngElasticSlider', [])
             enablePagination: '=',
             autoPlayDuration: '=',
             animation: '@',
+            triggerUpdate: '=', // bool
         },
         transclude: true,
         templateUrl: 'angular-elasticslider.html',
@@ -36,34 +37,57 @@ angular.module('ngElasticSlider', [])
 
             // Private properties
             // ================================================================
-            var _animation = scope.animation;
-            var _sliderOptions = {
-                activeSlide: scope.activeSlide || 1,
-                animation: _animation
-            };
+            var _animation = null; // scope.animation
+            var _sliderOptions = null; // obj
             var _disablePagi = false;
             var _totalSlides = 0;
 
             // Private properties
             // ================================================================
             function _constructor(scope, element) {
-                var elContainer = element[0]
-                    .querySelector('.ElasticSlider-container');
-
-                _totalSlides = elContainer.children.length;
-
-                scope.elasticSlider = new ElasticSlider(
-                    element[0],
-                    _sliderOptions
-                );
-                scope.pagiArr = _pagiFactory(_totalSlides, scope.activeSlide);
+                _init();
 
                 // One way binding
                 scope.$watch('animation', function(newVal, oldVal) {
                     if (newVal && newVal !== oldVal) {
                         _animation = newVal;
                     }
+                });
+
+                // Watch for re-compile
+                scope.$watch('triggerUpdate', function(newVal, oldVal) {
+                    if (newVal === true) {
+                        scope.elasticSlider.destroy();
+                        _init();
+                        scope.triggerUpdate = false;
+                    }
                 })
+            }
+
+            function _init() {
+                _animation = scope.animation;
+                _sliderOptions = {
+                    activeSlide: scope.activeSlide || 1,
+                    animation: _animation
+                };
+                _disablePagi = false;
+                _totalSlides = 0;
+
+                // Defer
+                // Wait for html to render
+                $timeout(function() {
+                    var elContainer = element[0]
+                        .querySelector('.ElasticSlider-container');
+
+                    _totalSlides = elContainer.children.length;
+
+                    scope.pagiArr = _pagiFactory(_totalSlides, scope.activeSlide);
+
+                    scope.elasticSlider = new ElasticSlider(
+                        element[0],
+                        _sliderOptions
+                    );
+                }, 100);
             }
 
             // Public methods
@@ -119,11 +143,11 @@ angular.module('ngElasticSlider', [])
                 }
 
                 scope.setActive(index);
-            },
+            }
 
             _constructor(scope, element);
         }
     }
-})
+}]);
 
 })(angular);

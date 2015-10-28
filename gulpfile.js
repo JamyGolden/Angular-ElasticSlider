@@ -11,7 +11,6 @@ var connect = require('gulp-connect');
 var del = require('del');
 var header = require('gulp-header');
 var uglify = require('gulp-uglify');
-var babel = require('gulp-babel'); // Uglify not working without gulp-babel?
 var rename = require('gulp-rename');
 var pkg = require('./package.json');
 var sass = require('gulp-sass');
@@ -91,7 +90,6 @@ gulp.task('dist:sass', function() {
 gulp.task('dist:build', ['dist:copyJs', 'dist:copyView'], function () {
     return gulp.src('temp/*.js')
         .pipe(concat('angular-elasticslider.min.js'))
-        .pipe(babel())
         .pipe(uglify())
         .pipe(header(banner, { pkg : pkg } ))
         .pipe(gulp.dest('dist'))
