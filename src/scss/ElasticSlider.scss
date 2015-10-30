@@ -20,6 +20,8 @@
         box-sizing: border-box;
         cursor: pointer;
         opacity: 0.3;
+        overflow: hidden;
+        text-indent: -100%;
         transition: opacity 0.2s ease;
 
         &:hover {
