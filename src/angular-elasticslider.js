@@ -135,11 +135,11 @@ angular.module('ngElasticSlider', [])
                 if (direction === 'prev'){
                     index = scope.elasticSlider.getProp('activeSlideIndex') -1;
 
-                    scope.elasticSlider.setProp('animationDirection', 'Prev');
+                    scope.elasticSlider.setProp('animationDirection', 'prev');
                 } else {
                     index = scope.elasticSlider.getProp('activeSlideIndex') +1;
 
-                    scope.elasticSlider.setProp('animationDirection', 'Next');
+                    scope.elasticSlider.setProp('animationDirection', 'next');
                 }
 
                 scope.setActive(index);

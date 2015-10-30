@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app="ExampleApp">
 <head>
-    <title>Elastic Slider</title>
+    <title>Angular ElasticSlider</title>
     <link rel="stylesheet" href="css/elasticslider.css">
 
     <style>
@@ -9,12 +9,24 @@
             height: 200px;
             width: 100%;
         }
+
+        .btn {
+            background: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: inline-block;
+            cursor: pointer;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
-    <div ng-click="addRemoveSlide();">
-        Add slide
+    <div class="btn"
+     ng-click="addRemoveSlide();">
+        Click to add slide
     </div>
+
     <elastic-slider class="slider"
      animation="fade"
      auto-play-duration="8000"
@@ -27,6 +39,7 @@
         </div>
     </elastic-slider>
 
+    <br>
 
     <elastic-slider class="slider"
      animation="slide"
@@ -53,8 +66,7 @@
 
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/elasticslider-core/dist/elasticslider-core.min.js"></script>
-    <script src="../dist/angular-elasticslider.min.js"></script>
-    <!-- <script src="angular-elasticslider.js"></script> -->
+    <script src="angular-elasticslider.js"></script>
     <script>
     (function(){
         'use strict';
