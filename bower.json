@@ -1,6 +1,6 @@
 {
   "name": "angular-elasticslider",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "An agnostic and responsive slider.",
   "authors": [
     "Jamy Golden <jamygolden@gmail.com>"
@@ -14,7 +14,7 @@
     "carousel"
   ],
   "dependencies": {
-    "angular": "~1.4.0",
-    "elasticslider-core": "~0.4.4"
+    "angular": ">1.5.0",
+    "elasticslider-core": "~0.5.4"
   }
 }

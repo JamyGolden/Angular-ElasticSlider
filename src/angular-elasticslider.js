@@ -24,12 +24,12 @@ angular.module('ngElasticSlider', [])
     return {
         restrict: 'E',
         scope: {
-            activeSlide: '=',
-            enableArrows: '=',
-            enablePagination: '=',
-            autoPlayDuration: '=',
+            activeSlide: '<',
+            enableArrows: '<',
+            enablePagination: '<',
+            autoPlayDuration: '<',
             animation: '@',
-            triggerUpdate: '=', // bool
+            triggerUpdate: '<', // bool
         },
         transclude: true,
         templateUrl: 'angular-elasticslider.html',
@@ -83,7 +83,7 @@ angular.module('ngElasticSlider', [])
 
                     scope.pagiArr = _pagiFactory(_totalSlides, scope.activeSlide);
 
-                    scope.elasticSlider = new ElasticSlider(
+                    scope.elasticSlider = new ElasticSliderCore(
                         element[0],
                         _sliderOptions
                     );

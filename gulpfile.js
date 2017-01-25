@@ -7,7 +7,7 @@ var banner = ['/**',
     ' */',
     ''].join('\n');
 var concat = require('gulp-concat');
-var connect = require('gulp-connect');
+var webserver = require('gulp-webserver');
 var del = require('del');
 var header = require('gulp-header');
 var uglify = require('gulp-uglify');
@@ -27,13 +27,11 @@ gulp.task('sass', function() {
         }))
         .pipe(sourcemaps.write())
         .pipe(rename('elasticslider.css'))
-        .pipe(gulp.dest('src/css'))
-        .pipe(connect.reload());
+        .pipe(gulp.dest('src/css'));
 });
 
 gulp.task('js', function () {
-    gulp.src('src/angular-elasticslider.js')
-        .pipe(connect.reload());
+    return gulp.src('src/angular-elasticslider.js');
 });
 
 gulp.task('watch', function () {
@@ -41,12 +39,14 @@ gulp.task('watch', function () {
     gulp.watch('src/angular-elasticslider.js', ['js']);
 });
 
-gulp.task('connect', function() {
-    connect.server({
-        port: 5000,
-        root: '.',
-        livereload: true
-    });
+gulp.task('webserver', () => {
+  return gulp.src('./src')
+      .pipe(webserver({
+          livereload: true,
+          fallback: 'demo.html',
+          port: 5000,
+          open: true,
+      }));
 });
 
 // Dist build
@@ -97,7 +97,7 @@ gulp.task('dist:build', ['dist:copyJs', 'dist:copyView'], function () {
 
 // Tasks
 // ============================================================================
-gulp.task('serve', ['sass', 'js', 'connect', 'watch']);
+gulp.task('serve', ['sass', 'js', 'webserver', 'watch']);
 gulp.task('default', ['dist:build', 'dist:sass'], function(cb) {
     return del(['temp'], cb);
 });
